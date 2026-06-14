@@ -7,8 +7,8 @@
 ## Project State
 
 - Starter template; `src/main.js` is empty, `src/render.js` has minimal DOM utilities
-- Dependencies in `requirements.md` (webpack, babel, etc.) are **not yet installed**
-- No test, build, or typecheck scripts configured
+- All devDependencies installed (webpack, babel, css/style loaders, etc.)
+- Only `npm run lint` configured; build/test/typecheck scripts not yet set up
 
 ## Conventions
 
