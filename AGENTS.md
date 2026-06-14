@@ -1,23 +1,29 @@
 # AGENTS.md
 
-## Available Commands
+## Доступные команды
 
-- `npm run lint` — ESLint on `src/` (only configured command)
+- `npm run lint` — ESLint для `src/` (единственная настроенная команда)
 
-## Project State
+## Состояние проекта
 
-- Starter template; `src/main.js` is empty, `src/render.js` has minimal DOM utilities
-- All devDependencies installed (webpack, babel, css/style loaders, etc.)
-- Only `npm run lint` configured; build/test/typecheck scripts not yet set up
+- Стартовый шаблон; `src/main.js` пуст, `src/render.js` содержит минимальные DOM-утилиты
+- Все devDependencies установлены (webpack, babel, css/style loaders и т.д.)
+- Настроен только `npm run lint`; скрипты сборки/тестов/типизации ещё не добавлены
 
-## Conventions
+## Конвенции
 
-- EditorConfig: 2-space indentation, LF line endings, UTF-8 charset
-- ESLint extends `htmlacademy/vanilla` with `es2022` browser env
-- Branch naming: `module{N}-task{N}` (e.g., `module2-task1`)
-- Do not commit to `master` — pull updates from `academy` remote per Contributing.md
+- EditorConfig: 2 пробела для отступов, LF окончания строк, UTF-8 кодировка
+- ESLint расширяет `htmlacademy/vanilla` с `es2022` browser env
 
-## Key Files
+## Соглашение о коммитах
 
-- `requirements.md` — lists all dependencies that should be installed
-- `Contributing.md` — git workflow (updating from academy, branch naming)
+Формат: `тип(область): описание` (Conventional Commits)
+
+- **Тип**: feat, fix, docs, refactor, test, ci
+- **Область (scope)**: модуль или область изменений
+- **Описание**: на русском языке, кратко
+- Breaking changes помечать восклицательным знаком: `тип!(): описание`
+
+## Ключевые файлы
+
+- `requirements.md` — список зависимостей для установки
