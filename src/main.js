@@ -1,15 +1,17 @@
-import TripFilters from './view/trip-filters.js';
-import TripSort from './view/trip-sort.js';
-import TripEventsContent from './view/trip-events-content.js';
+import FiltersView from './view/filters-view.js';
 import { render } from './render.js';
+import EventListPresenter from './presenter/events-list-presenter.js';
 
-const pageHeaderElement = document.querySelector('.page-header');
-const tripControlsFilters = pageHeaderElement.querySelector(
-  '.trip-controls__filters',
-);
-const pageMainElement = document.querySelector('.page-main');
-const sectionElementTripEvents = pageMainElement.querySelector('.trip-events');
+const tripControlsFilters = document.querySelector('.trip-controls__filters');
+const sectionElementTripEvents = document.querySelector('.trip-events');
+// Это паттерн «options object» — передача зависимостей/настроек одним объектом.
+// Плюсы:
+// - Расширяемость: легко добавить новые опции, не ломая сигнатуру ({boardContainer, headerContainer, onTaskAdd, ...}).
+// - Читаемость в месте вызова: new EventListPresenter({eventListContainer: sectionElementTripEvents}) сразу понятно, что за что отвечает.
+// - Не важен порядок аргументов (в отличие от позиционной передачи).
+const eventsListPresenter = new EventListPresenter({
+  eventListContainer: sectionElementTripEvents,
+});
+render(new FiltersView(), tripControlsFilters);
 
-render(new TripFilters(), tripControlsFilters);
-render(new TripSort(), sectionElementTripEvents);
-render(new TripEventsContent(), sectionElementTripEvents);
+eventsListPresenter.init();
