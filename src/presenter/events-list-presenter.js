@@ -5,23 +5,23 @@ import EventsListView from '../view/events-list-view.js';
 import SortView from '../view/sort-view.js';
 import { render } from '../render';
 
-export default class EventListPresenter {
+export default class EventsListPresenter {
   // Создаёт экземпляр View-компонента EventsListView один раз при инициализации класса.
   // Сам DOM-элемент <ul class="trip-events__list"> будет создан лениво при первом getElement()
   // в init().
-  eventListComponent = new EventsListView();
+  eventsListComponent = new EventsListView();
   // Принимает { eventListContainer } (<section class="trip-events">) — DOM-элемент
   // , в который будет встроен список.
-  constructor({ eventListContainer }) {
-    this.eventListContainer = eventListContainer;
+  constructor({ eventsListContainer }) {
+    this.eventsListContainer = eventsListContainer;
   }
 
   init() {
     // встраивает <ul class="trip-events__list"> списка в
     // указанный контейнер на странице <section class="trip-events">.
-    render(this.eventListComponent, this.eventListContainer);
+    render(this.eventsListComponent, this.eventsListContainer);
     // создаёт панель сортировки (<form class="trip-events__trip-sort  trip-sort" action="#" method="get">)
     // и помещает её внутрь контейнера списка <ul class="trip-events__list">
-    render(new SortView(), this.eventListComponent.getElement());
+    render(new SortView(), this.eventsListComponent.getElement());
   }
 }
