@@ -75,6 +75,7 @@ Pub/Sub на нативном EventTarget: class Store extends EventTarget { set
 
 - EditorConfig: 2 пробела для отступов, LF окончания строк, UTF-8 кодировка
 - ESLint расширяет `htmlacademy/vanilla` с `es2022` browser env
+- **Имена файлов:** шаблон `{kebab-case-name}-{layer}.js`. Составные имена — через дефисы, не camelCase. Суффикс слоя: `-view.js` для View-компонентов, `-presenter.js` для презентеров. Примеры: `events-message-view.js`, `events-list-presenter.js`, `event-date-view.js`, `filters-view.js`. Имена классов внутри файла — в PascalCase (`class EventsListView { ... }`) и не привязаны к регистру имени файла. В импортах расширение `.js` обязательно.
 
 ## Ключевые файлы
 
