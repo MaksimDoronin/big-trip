@@ -1,7 +1,4 @@
 import dayjs from 'dayjs';
-import duration from 'dayjs/plugin/duration.js';
-
-dayjs.extend(duration);
 
 export function formatDate(iso) {
   return dayjs(iso).format('MMM DD').toUpperCase();
@@ -20,10 +17,10 @@ export function formatDateOnly(iso) {
 }
 
 export function formatDuration(fromIso, toIso) {
-  const diff = dayjs(toIso).diff(dayjs(fromIso));
-  const d = dayjs.duration(diff);
-  const h = Math.floor(d.asHours());
-  const m = d.minutes();
+  const ms = new Date(toIso) - new Date(fromIso);
+  const totalMin = Math.floor(ms / 60000);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
   if (h === 0) {
     return `${String(m).padStart(2, '0')}M`;
   }
