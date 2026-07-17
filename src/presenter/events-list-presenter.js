@@ -2,19 +2,25 @@ import EventsListView from '../view/events-list-view.js';
 import SortView from '../view/sort-view.js';
 import { render } from '../render';
 import EventsItemView from '../view/events-item-view.js';
-import PointCreateView from '../view/point-create-view.js';
+import EventView from '../view/event-view.js';
 
 export default class EventsListPresenter {
   eventsListComponent = new EventsListView();
   eventsItemComponent = new EventsItemView();
-  constructor({ eventsListContainer }) {
+  constructor({ eventsListContainer, model }) {
     this.eventsListContainer = eventsListContainer;
+    this.model = model;
   }
 
   init() {
+    this.boardPoints = [...this.model.getPoints()];
     render(new SortView(), this.eventsListContainer);
     render(this.eventsListComponent, this.eventsListContainer);
     render(this.eventsItemComponent, this.eventsListComponent.getElement());
-    render(new PointCreateView(), this.eventsItemComponent.getElement());
+
+    for (let i = 0; i < this.boardPoints.length; i++) {
+      render(new EventView({point: this.boardPoints[i]}), this.eventsItemComponent.getElement());
+    }
+
   }
 }
