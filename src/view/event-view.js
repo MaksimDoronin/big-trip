@@ -48,11 +48,7 @@ function createEventViewTemplate({ point, destination, offers }) {
 }
 
 export default class EventView {
-  point = null;
-  destination = null;
-  offers = [];
-
-  constructor({ point, destination, offers }) {
+  constructor({ point = null, destination = null, offers = [] } = {}) {
     this.point = point;
     this.destination = destination;
     this.offers = offers;
