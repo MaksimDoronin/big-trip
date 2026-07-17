@@ -16,6 +16,10 @@ export function formatDateOnly(iso) {
   return dayjs(iso).format('YYYY-MM-DD');
 }
 
+export function formatDateTimeForInput(iso) {
+  return dayjs(iso).format('DD/MM/YY HH:mm');
+}
+
 export function formatDuration(fromIso, toIso) {
   const ms = new Date(toIso) - new Date(fromIso);
   const totalMin = Math.floor(ms / 60000);
@@ -26,3 +30,4 @@ export function formatDuration(fromIso, toIso) {
   }
   return `${String(h).padStart(2, '0')}H ${String(m).padStart(2, '0')}M`;
 }
+
