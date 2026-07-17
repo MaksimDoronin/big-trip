@@ -14,13 +14,23 @@ export default class EventsListPresenter {
 
   init() {
     this.boardPoints = [...this.model.getPoints()];
+    const destinations = this.model.getDestinations();
+    const offersByType = this.model.getOffersByType();
+
     render(new SortView(), this.eventsListContainer);
     render(this.eventsListComponent, this.eventsListContainer);
     render(this.eventsItemComponent, this.eventsListComponent.getElement());
 
     for (let i = 0; i < this.boardPoints.length; i++) {
-      render(new EventView({point: this.boardPoints[i]}), this.eventsItemComponent.getElement());
-    }
+      const point = this.boardPoints[i];
+      const destination = destinations.find((d) => d.id === point.destinationId);
+      const offers = (offersByType[point.type] || [])
+        .filter((offer) => point.offerIds.includes(offer.id));
 
+      render(
+        new EventView({ point, destination, offers }),
+        this.eventsItemComponent.getElement(),
+      );
+    }
   }
 }
