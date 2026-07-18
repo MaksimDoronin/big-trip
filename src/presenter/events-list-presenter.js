@@ -13,7 +13,7 @@ export default class EventsListPresenter {
   }
 
   init() {
-    this.boardPoints = [...this.model.getPoints()];
+    this.listPoints = [...this.model.getPoints()];
     const destinations = this.model.getDestinations();
     const offersByType = this.model.getOffersByType();
 
@@ -21,9 +21,9 @@ export default class EventsListPresenter {
     render(this.eventsListComponent, this.eventsListContainer);
     render(this.eventsItemComponent, this.eventsListComponent.getElement());
 
-    for (let i = 0; i < this.boardPoints.length; i++) {
-      const point = this.boardPoints[i];
-      const destination = destinations.find((d) => d.id === point.destinationId);
+    for (let i = 0; i < this.listPoints.length; i++) {
+      const point = this.listPoints[i];
+      const destination = destinations.find((item) => item.id === point.destinationId);
       const offers = (offersByType[point.type] || [])
         .filter((offer) => point.offerIds.includes(offer.id));
 
